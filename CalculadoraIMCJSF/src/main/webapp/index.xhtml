@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Calculadora de IMC - PrimeFaces</title>
+</h:head>
+<h:body>
+    <h:form>
+    <h3>Calcular IMC</h3>
+
+    <p:panelGrid columns="2" style="gap:10px; padding:10px;">
+
+        <h:outputLabel for="peso" value="Peso (kg):" />
+        <p:inputNumber id="peso" value="#{imcBean.peso}"/>
+
+        <h:outputLabel for="altura" value="Altura (m):" />
+        <p:inputNumber id="altura" value="#{imcBean.altura}"/>
+
+        <p:commandButton value="Calcular" action="#{imcBean.calcular}" update="@form" />
+    </p:panelGrid>
+
+    <h:panelGroup rendered="#{not empty imcBean.resultado}">
+        <h3>Resultado</h3>
+        <h:outputText value="#{imcBean.resultado}" />
+    </h:panelGroup>
+</h:form>
+
+</h:body>
+</html>
